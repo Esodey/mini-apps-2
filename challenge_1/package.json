@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch db.json",
+    "server": "json-server --watch data/db.json",
     "build": "webpack -dw",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,12 +16,14 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "json-server": "^0.15.0",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5"
   },
   "dependencies": {
     "express": "^4.17.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-paginate": "^6.3.0"
   }
 }
