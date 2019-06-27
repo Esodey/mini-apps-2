@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from 'chart.js';
+import Chart from './Chart.jsx';
 // import Cryptocurrencydata from './CryptoCurrencyData.jsx';
 
 
@@ -29,13 +29,19 @@ class App extends React.Component {
 
 
   render () {
-    return (
-      <div>
-        <h1>Cryptocurrency Charting Tool</h1>
- 
-          {/* <Cryptocurrencydata currencyData={this.state.cryptoCurrencyData} /> */}
-        </div>
-    )
+    if (this.state.cryptoCurrencyDate.length > 0) {
+      return (
+        <div>
+          <h1>Cryptocurrency Charting Tool</h1>
+            <Chart cryptoCurrencyDate={this.state.cryptoCurrencyDate} cryptoCurrencyData={this.state.cryptoCurrencyData} />
+          </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+    
   }
 }
 
