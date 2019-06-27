@@ -9,10 +9,12 @@ class App extends React.Component {
       this.state = {
           searchValue: '',
           events: [],
-          pageCount: 0
+          pageCount: 10,
+          offset: 1
       }
       this.handleChange = this.handleChange.bind(this);
       this.handleSearch = this.handleSearch.bind(this);
+      this.handlePageClick = this.handlePageClick.bind(this);
     }
 
     handleChange(event) {
@@ -21,19 +23,27 @@ class App extends React.Component {
 
     handleSearch() {
         let queryString = this.state.searchValue;
-        console.log(queryString)
         $.ajax({
             type: 'GET',
             url: `/events/?q=${queryString}&_page=${this.state.offset}`,
             success: (events) => {
-                console.log(events);
+                // console.log(events);
                 this.setState({
                     events: events,
-                    pageCount: (events.length / 10)
+                    
                 })
             }
         })
     }
+
+    handlePageClick(events) {
+        console.log(events);
+        let offset = this.state.offset + 1;
+    
+        this.setState({ offset: offset }, () => {
+          this.handleSearch();
+        });
+      };
 
     render() {
     return (
@@ -50,7 +60,7 @@ class App extends React.Component {
                 pageCount={this.state.pageCount}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
-                onPageChange={this.handlePageClick}
+                onPageChange={() => this.handlePageClick(this.state.events)}
                 containerClassName={'pagination'}
                 subContainerClassName={'pages pagination'}
                 activeClassName={'active'}
