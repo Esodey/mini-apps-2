@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import TotalScore from './TotalScore.jsx'
 
 class Table extends Component {
    constructor(props) {
@@ -12,7 +11,7 @@ class Table extends Component {
    }
 
    renderScoreHeader() {
-      let header = ['Frame:',1,2,3,4,5,6,7,8,9,10]
+      let header = ['Frame:',1,2,3,4,5,6,7,8,9,10];
       return header.map((key, index) => {
         return <th key={index}>{key}</th>
       })
@@ -21,17 +20,37 @@ class Table extends Component {
    renderScoreData() {
        return (
           <tr>
-             <td>{this.state.player[0]}</td>
-             <td>{this.state.player[1]}</td>
-             <td>{this.state.player[2]}</td>
-             <td>{this.state.player[3]}</td>
-             <td>{this.state.player[4]}</td>
-             <td>{this.state.player[5]}</td>
-             <td>{this.state.player[6]}</td>
-             <td>{this.state.player[7]}</td>
-             <td>{this.state.player[8]}</td>
-             <td>{this.state.player[9]}</td>
-             <td>{this.state.player[10]}</td>
+             <td>{this.state.player[0][0] + ' ' + this.state.player[0][1]}</td>
+             <td>{this.state.player[1][0] + ' ' + this.state.player[1][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[2][0] + ' ' + this.state.player[2][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[3][0] + ' ' + this.state.player[3][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[4][0] + ' ' + this.state.player[4][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[5][0] + ' ' + this.state.player[5][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[6][0] + ' ' + this.state.player[6][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[7][0] + ' ' + this.state.player[7][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[8][0] + ' ' + this.state.player[8][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[9][0] + ' ' + this.state.player[9][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
+             <td>{this.state.player[10][0] + ' ' + this.state.player[10][1]}
+                <div>{this.props.totalScore}</div>
+             </td>
           </tr>
        )
     }
@@ -47,7 +66,6 @@ class Table extends Component {
                 {this.renderScoreData()}
               </tbody>
             </table>
-            <TotalScore score={this.state.player.slice(1)} />
          </div>
       )
    }
